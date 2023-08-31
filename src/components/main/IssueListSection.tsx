@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
+
 import { styled } from 'styled-components'
 
 import IssueCard from './IssueCard'
-import useScroll from './hook/useScroll'
 import { CORE_API } from '../../api/core'
+import { OWNER, REPO } from '../../api/constants'
+import useScroll from './hook/useScroll'
 import { sortingIsOpen } from '../../util/sortingIsOpen'
 import { sortingComments } from '../../util/sortingComments'
 import { IssueDataType } from '../../util/type'
-import { OWNER, REPO } from '../../api/constants'
 
 const IssueListSection = () => {
   const [issueCard, setIssueCard] = useState<IssueDataType[]>([])
@@ -24,7 +25,7 @@ const IssueListSection = () => {
         const response = await CORE_API(
           'get',
           `/repos/${OWNER}/${REPO}/issues`,
-          { per_page: 10, page: page }
+          { per_page: 10, page }
         )
         const { data } = response
 
@@ -53,7 +54,15 @@ const IssueListSection = () => {
       <Box ref={issueListRef}>
         {issueCard.map(
           (
-            { id, number, title, user: { login }, created_at, comments },
+            {
+              id,
+              number,
+              title,
+              user: { login, avatar_url },
+              created_at,
+              comments,
+              body,
+            },
             index
           ) => (
             <IssueCard
@@ -64,6 +73,8 @@ const IssueListSection = () => {
               created_at={created_at}
               comments={comments}
               count={index}
+              avatar_url={avatar_url}
+              body={body}
             />
           )
         )}
