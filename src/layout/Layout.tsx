@@ -23,18 +23,18 @@ const Box = styled.div`
   background-color: #c0d6e4;
 `
 const Wrapper = styled.div`
-  width: 400px;
-  height: 700px;
+  width: 40rem;
+  height: 70rem;
   padding: 1rem;
-  border: 1px solid #e1e2e3;
-  border-radius: 10px;
+  border: 0.1rem solid #e1e2e3;
+  border-radius: 1rem;
   background-color: #fff;
 `
 const Header = styled.header``
 const Title = styled.h1`
   text-align: center;
-  margin-bottom: 10px;
-  font-size: 24px;
+  margin-bottom: 1rem;
+  font-size: 2.4rem;
   font-weight: bold;
 `
 
