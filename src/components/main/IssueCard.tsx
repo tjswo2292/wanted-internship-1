@@ -73,7 +73,7 @@ const IssueCard = ({
           </CommentWrapper>
         </Box>
       </MoveBtn>
-      {(count + 1) % 5 === 0 && <AdBanner />}
+      {(count + 1) % 4 === 0 && <AdBanner />}
     </>
   )
 }
