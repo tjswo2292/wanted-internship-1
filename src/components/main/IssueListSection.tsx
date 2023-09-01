@@ -30,9 +30,9 @@ const IssueListSection = () => {
         const { data } = response
 
         const sortedIsOpen = sortingIsOpen(data)
-        const sortedData = sortingComments(sortedIsOpen)
+        const sortedData = sortingComments([...issueCard, ...sortedIsOpen])
 
-        setIssueCard((prev) => [...prev, ...sortedData])
+        setIssueCard(sortedData)
       } catch (error) {
         console.log(error)
       }
