@@ -30,7 +30,7 @@
 
 ### 데이터 요청 중 로딩 표시
 
-https://github.com/tjswo2292/wanted-internship-1/assets/55657931/0867a273-8cc9-41a5-863b-eb03696ec59b
+  https://github.com/preonboardingTeam15/pre-onboarding-12th-2-15/assets/55657931/8f609019-7486-4b67-8ffd-bc578db864ef
 
 - IssueListSection 데이터 로딩
 - Infinite scroll 데이터 로딩
