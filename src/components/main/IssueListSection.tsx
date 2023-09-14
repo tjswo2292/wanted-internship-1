@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { styled } from 'styled-components'
 
-import IssueCard from './IssueCard'
+import IssueCardWrapper from './IssueCardWrapper'
 import { CORE_API } from '../../api/core'
 import { OWNER, REPO } from '../../api/constants'
 import useScroll from './hook/useScroll'
@@ -65,11 +65,11 @@ const IssueListSection = () => {
             },
             index
           ) => (
-            <IssueCard
+            <IssueCardWrapper
               key={id}
               number={number}
               title={title}
-              userId={login}
+              user_id={login}
               created_at={created_at}
               comments={comments}
               count={index}
