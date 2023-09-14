@@ -10,10 +10,12 @@ import { sortingIsOpen } from '../../util/sortingIsOpen'
 import { sortingComments } from '../../util/sortingComments'
 import { IssueDataType } from '../../util/type'
 import InfiniteScrollLoading from '../loading/InfiniteScrollLoading'
+import MainLoading from '../loading/MainLoading'
 
 const IssueListSection = () => {
   const [issueCard, setIssueCard] = useState<IssueDataType[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const [isIssueLoading, setIsIssueLoading] = useState(false)
   const [page, setPage] = useState(1)
   const issueListRef = useRef<HTMLDivElement>(null)
 
@@ -45,6 +47,10 @@ const IssueListSection = () => {
   }, [page])
 
   useEffect(() => {
+    issueCard.length === 0 ? setIsIssueLoading(true) : setIsIssueLoading(false)
+  }, [issueCard])
+
+  useEffect(() => {
     if (scrollHeight !== 0 && refCurrent) {
       if (
         refCurrent.scrollTop >=
@@ -59,6 +65,7 @@ const IssueListSection = () => {
   return (
     <Section>
       <Box ref={issueListRef}>
+        {isIssueLoading && <MainLoading />}
         {issueCard.map(
           (
             {
