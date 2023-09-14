@@ -1,18 +1,14 @@
-import { useContext } from 'react'
-
-import { useLocation } from 'react-router-dom'
+import { useLocation, useSearchParams } from 'react-router-dom'
 import { styled } from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 import 'github-markdown-css/github-markdown.css'
 
 import IssueCard from '../main/IssueCard'
-import { IssueContext } from '../../context/IssueContext'
 
 const Detail = () => {
-  const { state } = useLocation()
-  const { issueInfo }: any = useContext(IssueContext)
-  const { number, title, userId, created_at, comments, count, avatar_url } =
-    issueInfo
+  const location = useLocation()
+  const [searchParams] = useSearchParams()
+  const { text, title, user_id, avatar_url, created_at } = location.state
 
   return (
     <Box>
@@ -21,16 +17,15 @@ const Detail = () => {
           <Image src={avatar_url} alt="프로필사진" />
         </AvatarWrapper>
         <IssueCard
-          number={number}
+          number={searchParams.get('number')}
           title={title}
-          userId={userId}
+          user_id={user_id}
           created_at={created_at}
-          comments={comments}
-          count={count}
+          comments={searchParams.get('comments')}
         />
       </ProfileWrapper>
 
-      <ReactMarkdown className="markdown-body">{state.text}</ReactMarkdown>
+      <ReactMarkdown className="markdown-body">{text}</ReactMarkdown>
     </Box>
   )
 }
