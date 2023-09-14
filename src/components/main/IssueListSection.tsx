@@ -9,9 +9,11 @@ import useScroll from './hook/useScroll'
 import { sortingIsOpen } from '../../util/sortingIsOpen'
 import { sortingComments } from '../../util/sortingComments'
 import { IssueDataType } from '../../util/type'
+import InfiniteScrollLoading from '../loading/InfiniteScrollLoading'
 
 const IssueListSection = () => {
   const [issueCard, setIssueCard] = useState<IssueDataType[]>([])
+  const [isLoading, setIsLoading] = useState(false)
   const [page, setPage] = useState(1)
   const issueListRef = useRef<HTMLDivElement>(null)
 
@@ -33,6 +35,7 @@ const IssueListSection = () => {
         const sortedData = sortingComments([...issueCard, ...sortedIsOpen])
 
         setIssueCard(sortedData)
+        setIsLoading(false)
       } catch (error) {
         console.log(error)
       }
@@ -43,9 +46,13 @@ const IssueListSection = () => {
 
   useEffect(() => {
     if (scrollHeight !== 0 && refCurrent) {
-      refCurrent.scrollTop >=
-        refCurrent.scrollHeight - refCurrent.clientHeight &&
+      if (
+        refCurrent.scrollTop >=
+        refCurrent.scrollHeight - refCurrent.clientHeight
+      ) {
+        setIsLoading(true)
         setPage((prev) => prev + 1)
+      }
     }
   }, [scrollHeight])
 
@@ -78,6 +85,7 @@ const IssueListSection = () => {
             />
           )
         )}
+        {isLoading && <InfiniteScrollLoading />}
       </Box>
     </Section>
   )
