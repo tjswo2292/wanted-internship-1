@@ -8,6 +8,29 @@
 [![react-markdown](https://img.shields.io/badge/react--markdown-00bfff?style=for-the-badge&logo=react&logoColor=white)](https://github.com/uiwjs/react-markdown-preview)
 [![Octokit](https://img.shields.io/badge/Octokit-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/octokit/octokit.js)
 
+# 버전 정보
+
+| 이름               | 버전    |
+| ----------------- | ------- |
+| node              | ^18.7.0 |
+| npm               | ^9.8.1 |
+| react             | ^18.2.0 |
+| octokit           | ^3.1.0  |
+
+# 프로젝트 실뱅방법
+
+https://github.com/settings/tokens 에서 토큰을 발급받아오자
+(🚨 token을 발급 받지 않고 사용하면 api 호출 횟수에 제한이 있다.) 
+
+```
+git clone
+
+echo "REACT_APP_GIHUB_API_KEY = 발급받은 token" > .env
+
+npm install
+npm start
+```
+
 # 주요기능
 
 ### open 상태의 이슈 중 코멘트가 많은 순으로 정렬
