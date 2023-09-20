@@ -17,7 +17,7 @@
 | react             | ^18.2.0 |
 | octokit           | ^3.1.0  |
 
-# 프로젝트 실뱅방법
+# 프로젝트 실행
 
 https://github.com/settings/tokens 에서 토큰을 발급받아오자
 (🚨 token을 발급 받지 않고 사용하면 api 호출 횟수에 제한이 있다.) 
@@ -34,12 +34,12 @@ npm start
 # 주요기능
 
 ### open 상태의 이슈 중 코멘트가 많은 순으로 정렬
-  - api 요청으로 받아온 응답 데이터를 util/sortingComments.ts 유틸함수를 통해서 정렬
+  - api 요청으로 받아온 응답 데이터를 util/sortingComments.ts 유틸 함수를 통해서 정렬
 
 ### 다섯번째 셀마다 광고 이미지 출력
 
   1. 광고 이미지 컴포넌트 선언 : AdBanner.tsx
-  2. IssueCardWRapper 컴포넌트에서 조건에 맞는 index 값에 따라 AdBanner 컴포넌트 노출
+  2. IssueCardWrapper 컴포넌트에서 조건에 맞는 index 값에 따라 AdBanner 컴포넌트 노출
 
 ### 화면을 아래로 스크롤 할 시 이슈 목록 추가 로딩(Infinite scroll)
 
